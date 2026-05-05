@@ -134,10 +134,10 @@ export default function HomePage() {
       <header className="navbar">
         <div className="container navbar-inner">
           <a href="#home" className="brand brand-nav">
-            <div className="brand-mark">D</div>
+            <div className="brand-mark">M</div>
             <div>
               <h1>
-                DineSync-<span>POS</span>
+                Maxventory-<span>POS</span>
               </h1>
             </div>
           </a>
@@ -325,7 +325,7 @@ export default function HomePage() {
             </p>
           </div>
           <div className="demo-video full-demo-video">
-            <p>Product Demo Video</p>
+            {/* <p>Product Demo Video</p> */}
             <div className="demo-video-frame">
               <video controls preload="metadata">
                 <source src="/demo1.mp4" type="video/mp4" />
@@ -394,9 +394,9 @@ export default function HomePage() {
         <div className="container footer-inner">
           <div>
             <div className="brand footer-brand">
-              <div className="brand-mark">D</div>
+              <div className="brand-mark">M</div>
               <h3>
-                DineSync-<span>POS</span>
+                Maxventory-<span>POS</span>
               </h3>
             </div>
             <p>
