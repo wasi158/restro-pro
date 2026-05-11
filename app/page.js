@@ -1,3 +1,5 @@
+"use client"
+
 import ScrollTopButton from "./ScrollTopButton";
 import Navbar from "./Navbar";
 
@@ -137,7 +139,7 @@ export default function HomePage() {
             <div className="brand-mark">M</div>
             <div>
               <h1>
-                Maxventory-<span>POS</span>
+                MaxDine-<span>POS</span>
               </h1>
             </div>
           </a>
@@ -300,7 +302,7 @@ export default function HomePage() {
         <div className="container">
           <div className="section-head">
             <p className="kicker">Client Stories</p>
-            <h2>Restaurants trust DineSync-POS for reliable performance.</h2>
+            <h2>Restaurants trust MaxDine-POS for reliable performance.</h2>
           </div>
           <div className="testimonial-grid">
             {testimonials.map((item) => (
@@ -318,7 +320,7 @@ export default function HomePage() {
         <div className="container demo-section">
           <div className="section-head">
             <p className="kicker">Watch Demo</p>
-            <h2>See DineSync-POS in action.</h2>
+            <h2>See MaxDine-POS in action.</h2>
             <p>
               Explore how billing, kitchen, inventory, staff and reports work
               together in a single smart dashboard.
@@ -396,7 +398,7 @@ export default function HomePage() {
             <div className="brand footer-brand">
               <div className="brand-mark">M</div>
               <h3>
-                Maxventory-<span>POS</span>
+                MaxDine-<span>POS</span>
               </h3>
             </div>
             <p>
