@@ -8,7 +8,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
-  title: "DineSync-POS | Smart POS for Restaurants",
+  title: "MaxDine-POS | Smart POS for Restaurants",
   description:
     "All-in-one restaurant POS website showcasing analytics, operations, and kitchen integration."
 };
