@@ -8,11 +8,53 @@ import { siteConfig } from "./siteConfig";
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
-  // { label: "Features", href: "#features" },
+  { label: "Why Us", href: "#why-choose-us" },
   { label: "Modules", href: "#modules" },
   { label: "Management", href: "#management" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" }
+];
+
+const whyChooseReasons = [
+  {
+    title: "Restaurant-First Design",
+    text: "Every workflow is built for real dining floors, rush hours, and multi-station teams."
+  },
+  {
+    title: "Faster Daily Operations",
+    text: "Reduce manual work with connected billing, kitchen, inventory, and reporting in one place."
+  },
+  {
+    title: "Trusted by Growing Brands",
+    text: "From single outlets to multi-branch setups, scale operations with confidence."
+  }
+];
+
+const advantageCards = [
+  {
+    id: "offline-support",
+    icon: "offline",
+    title: "Offline Support",
+    text: "Keep taking orders and printing bills even when internet drops. Data syncs automatically when you are back online."
+  },
+  {
+    id: "support-247",
+    icon: "support",
+    title: "24/7 Support",
+    text: "Our support team is available around the clock to help your staff with setup, billing, and day-to-day POS issues."
+  },
+  {
+    id: "secure-data",
+    icon: "secure",
+    title: "Secure Data",
+    text: "Protect sales, customer, and business records with secure backups, role-based access, and encrypted data handling."
+  },
+  {
+    id: "easy-billing",
+    icon: "billing",
+    title: "Easy Billing",
+    text: "Create bills in seconds with split payments, discounts, taxes, and receipts designed for fast checkout."
+  }
 ];
 
 const moduleCards = [
@@ -38,17 +80,32 @@ const testimonials = [
   {
     name: "Marcus V.",
     role: "General Manager",
-    text: "DineSync-POS made our service faster and gave us clear daily insights for decisions."
+    text: "MaxDine-POS made our service faster and gave us clear daily insights for better decisions."
   },
   {
     name: "Riya A.",
     role: "Cafe Owner",
-    text: "Table turnover improved, billing became smooth, and the team adapted in one day."
+    text: "Table turnover improved, billing became smooth, and our team adapted in just one day."
   },
   {
     name: "Chef Daniel",
     role: "Kitchen Lead",
-    text: "Kitchen KDS removed confusion between waitstaff and kitchen during peak time."
+    text: "Kitchen display removed confusion between waitstaff and kitchen during peak hours."
+  },
+  {
+    name: "Sana K.",
+    role: "Restaurant Owner",
+    text: "Offline support saved us during internet outages. Billing never stopped on busy weekends."
+  },
+  {
+    name: "Imran H.",
+    role: "Operations Head",
+    text: "24/7 support is real. Their team helped us fix issues late night during dinner service."
+  },
+  {
+    name: "Aisha M.",
+    role: "Finance Manager",
+    text: "Secure data and easy billing reports helped us track sales and control costs confidently."
   }
 ];
 
@@ -89,6 +146,39 @@ const managementCards = [
     text: "Launch combo offers and seasonal promotions quickly to increase order value."
   }
 ];
+
+function AdvantageIcon({ type }) {
+  const icons = {
+    offline: (
+      <path d="M3 12a9 9 0 0 1 15.5-6.5M21 12a9 9 0 0 1-15.5 6.5M8 12h8" />
+    ),
+    support: (
+      <path d="M12 6v6l4 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+    ),
+    secure: (
+      <path d="M12 3 5 6v6c0 4.4 3 7.7 7 8.8 4-1.1 7-4.4 7-8.8V6l-7-3Zm0 8v3" />
+    ),
+    billing: (
+      <path d="M7 4h10v16H7zM9 8h6M9 12h6M9 16h4" />
+    )
+  };
+
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {icons[type]}
+    </svg>
+  );
+}
 
 function ManagementIcon({ type }) {
   const icons = {
@@ -173,8 +263,8 @@ export default function HomePage() {
                 <a href="#demo" className="btn-primary">
                   Watch Demo
                 </a>
-                <a href="#features" className="btn-secondary">
-                  Explore Features
+                <a href="#why-choose-us" className="btn-secondary">
+                  Why Choose Us
                 </a>
               </div>
             </div>
@@ -251,6 +341,59 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="section why-choose reveal" id="why-choose-us">
+        <div className="container">
+          <div className="section-head">
+            <p className="kicker">Why Choose Us</p>
+            <h2>Everything your restaurant needs to run smoothly every day.</h2>
+            <p>
+              MaxDine-POS combines speed, reliability, and support so your team can
+              focus on guests—not manual work.
+            </p>
+          </div>
+          <div className="why-choose-grid">
+            {whyChooseReasons.map((item) => (
+              <article key={item.title} className="why-card card-animate">
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+          <div className="feature-tree" role="tree" aria-label="MaxDine-POS advantages">
+            <div className="feature-tree-root" role="treeitem" aria-expanded="true">
+              <span className="feature-tree-node-dot feature-tree-node-dot--root">
+                M
+              </span>
+              <h3>MaxDine-POS</h3>
+              <p>One platform. Complete restaurant control.</p>
+            </div>
+
+            <div className="feature-tree-connector" aria-hidden="true">
+              <span className="tree-line tree-line--stem" />
+              <span className="tree-line tree-line--branch" />
+            </div>
+
+            <div className="feature-tree-children" role="group">
+              {advantageCards.map((item) => (
+                <article
+                  key={item.id}
+                  id={item.id}
+                  className="feature-tree-node"
+                  role="treeitem"
+                >
+                  <span className="tree-line tree-line--drop" aria-hidden="true" />
+                  <span className="feature-tree-node-dot" aria-hidden="true">
+                    <AdvantageIcon type={item.icon} />
+                  </span>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="section reveal" id="modules">
         <div className="container">
           <div className="section-head">
@@ -300,16 +443,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section reveal" id="testimonials">
+      <section className="section testimonials-section reveal" id="testimonials">
         <div className="container">
           <div className="section-head">
-            <p className="kicker">Client Stories</p>
-            <h2>Restaurants trust MaxDine-POS for reliable performance.</h2>
+            <p className="kicker">Client Testimonials</p>
+            <h2>Real feedback from restaurants using MaxDine-POS.</h2>
+            <p>
+              Owners, managers, and kitchen teams share how MaxDine-POS improved
+              billing, support, and daily operations.
+            </p>
           </div>
           <div className="testimonial-grid">
             {testimonials.map((item) => (
               <article key={item.name} className="testimonial-card card-animate">
-                <p>{item.text}</p>
+                <div className="testimonial-stars" aria-label="5 out of 5 stars">
+                  ★★★★★
+                </div>
+                <p className="testimonial-quote">&ldquo;{item.text}&rdquo;</p>
                 <h4>{item.name}</h4>
                 <span>{item.role}</span>
               </article>
