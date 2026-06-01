@@ -524,6 +524,10 @@ a {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.why-choose-grid {
+  margin-bottom: 12px;
+}
+
 .why-choose {
   background: linear-gradient(180deg, rgba(248, 196, 11, 0.04), transparent 55%);
 }
@@ -554,18 +558,28 @@ a {
 }
 
 .feature-tree {
-  margin-top: 96px;
+  margin-top: 40px;
+  padding: 24px 12px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  box-sizing: border-box;
+  overflow-x: clip;
 }
 
 .feature-tree-root {
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  max-width: 360px;
+  width: 100%;
+  max-width: min(360px, 100%);
+  padding: 0 16px 20px;
+  box-sizing: border-box;
+  isolation: isolate;
 }
 
 .feature-tree-node-dot {
@@ -581,27 +595,36 @@ a {
 }
 
 .feature-tree-node-dot--root {
+  flex-shrink: 0;
   width: 64px;
   height: 64px;
+  margin-bottom: 16px;
   font-size: 28px;
   font-weight: 800;
   color: #ffffff;
   background: #0a0a0a;
   border: 3px solid var(--brand);
-  box-shadow: 0 0 0 8px rgba(248, 196, 11, 0.15);
+  box-shadow: 0 0 0 6px rgba(248, 196, 11, 0.12);
 }
 
 .feature-tree-root h3 {
   color: #ffffff;
   font-size: clamp(22px, 2.6vw, 30px);
-  line-height: 1.15;
+  line-height: 1.2;
+  width: 100%;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .feature-tree-root p {
-  margin-top: 6px;
+  margin-top: 8px;
   font-size: 14px;
   font-weight: 500;
   color: var(--muted);
+  line-height: 1.5;
+  width: 100%;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .feature-tree-connector {
@@ -685,7 +708,6 @@ a {
 }
 
 @keyframes treeIconClockSwing {
-
   0%,
   100% {
     transform: rotate(-16deg) translateX(-4px);
@@ -693,6 +715,17 @@ a {
 
   50% {
     transform: rotate(16deg) translateX(4px);
+  }
+}
+
+@keyframes treeIconClockSwingMobile {
+  0%,
+  100% {
+    transform: rotate(-10deg) translateX(-3px);
+  }
+
+  50% {
+    transform: rotate(10deg) translateX(3px);
   }
 }
 
@@ -1508,22 +1541,57 @@ a {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .feature-tree {
+    margin-top: 32px;
+    padding: 20px 8px 0;
+  }
+
+  .feature-tree-root {
+    padding: 0 12px 16px;
+  }
+
+  .feature-tree-node-dot--root {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 14px;
+    font-size: 24px;
+    border-width: 2px;
+    box-shadow: 0 0 0 4px rgba(248, 196, 11, 0.1);
+  }
+
+  .feature-tree-root h3 {
+    font-size: clamp(20px, 5vw, 26px);
+    padding: 0 4px;
+  }
+
+  .feature-tree-root p {
+    font-size: 13px;
+    padding: 0 6px;
+  }
+
+  .feature-tree-connector {
+    height: 40px;
+    width: 100%;
+  }
+
   .feature-tree-children {
     position: relative;
     grid-template-columns: 1fr;
-    max-width: 480px;
-    margin: 0 auto;
-    padding-top: 4px;
+    width: 100%;
+    max-width: 100%;
+    margin: 12px 0 0;
+    padding: 12px 0 0 0;
   }
 
+  /* Timeline rail on the left — never through text */
   .feature-tree-children::before {
     content: "";
     position: absolute;
     top: 0;
-    left: 50%;
+    left: 21px;
     width: 3px;
-    height: 100%;
-    transform: translateX(-50%);
+    height: calc(100% - 8px);
+    transform: none;
     background: var(--brand);
     z-index: 0;
   }
@@ -1531,11 +1599,39 @@ a {
   .feature-tree-node {
     position: relative;
     z-index: 1;
-    padding-bottom: 16px;
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    column-gap: 16px;
+    align-items: start;
+    text-align: left;
+    padding: 0 4px 24px 0;
   }
 
   .feature-tree-node .feature-tree-node-dot {
-    box-shadow: 0 0 0 5px rgba(248, 196, 11, 0.1);
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+    justify-self: center;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 0 4px rgba(248, 196, 11, 0.1);
+  }
+
+  .feature-tree-node h3 {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+  }
+
+  .feature-tree-node p {
+    grid-column: 2;
+    grid-row: 2;
+    max-width: none;
+    margin-top: 6px;
+  }
+
+  .feature-tree-node:hover .feature-tree-node-dot {
+    animation: treeIconClockSwingMobile 0.85s ease-in-out infinite;
   }
 
   .tree-line--branch,
@@ -1544,7 +1640,7 @@ a {
   }
 
   .feature-tree-connector .tree-line--stem {
-    height: 36px;
+    height: 32px;
   }
 
   .split-layout {
@@ -1695,6 +1791,56 @@ a {
   .testimonial-grid,
   .why-choose-grid {
     grid-template-columns: 1fr;
+    margin-bottom: 16px;
+  }
+
+  .feature-tree {
+    margin-top: 28px;
+    padding-top: 16px;
+  }
+
+  .feature-tree-root {
+    max-width: 100%;
+    padding-bottom: 12px;
+  }
+
+  .feature-tree-node-dot--root {
+    width: 52px;
+    height: 52px;
+    font-size: 22px;
+    margin-bottom: 12px;
+    box-shadow: 0 0 0 3px rgba(248, 196, 11, 0.1);
+  }
+
+  .feature-tree-root h3 {
+    font-size: 20px;
+  }
+
+  .feature-tree-root p {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .feature-tree-connector {
+    height: 28px;
+  }
+
+  .feature-tree-connector .tree-line--stem {
+    height: 24px;
+  }
+
+  .feature-tree-children {
+    margin-top: 8px;
+    padding-top: 8px;
+  }
+
+  .feature-tree-children::before {
+    left: 19px;
+  }
+
+  .feature-tree-node {
+    column-gap: 12px;
+    padding-bottom: 20px;
   }
 
   .split-right {
