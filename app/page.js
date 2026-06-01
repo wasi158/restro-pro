@@ -2,6 +2,8 @@
 
 import ScrollTopButton from "./ScrollTopButton";
 import Navbar from "./Navbar";
+import WhatsAppChat from "./WhatsAppChat";
+import { siteConfig } from "./siteConfig";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -216,10 +218,10 @@ export default function HomePage() {
       <section className="section reveal" id="about">
         <div className="container">
           <div className="section-head">
-            <p className="kicker">About DineSync-POS</p>
+            <p className="kicker">About MaxDine-POS</p>
             <h2>Built for modern restaurants that move fast.</h2>
             <p>
-              DineSync-POS is designed for cafes, cloud kitchens, and full-service
+              MaxDine-POS is designed for cafes, cloud kitchens, and full-service
               restaurants to manage every operation from one dashboard.
             </p>
           </div>
@@ -352,6 +354,16 @@ export default function HomePage() {
               <span>Custom package</span>
               <span>1:1 onboarding</span>
             </div>
+            <a
+              href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(
+                "Hi! I'd like to discuss MaxDine-POS for my restaurant."
+              )}`}
+              className="btn-whatsapp"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Chat on WhatsApp
+            </a>
           </div>
           <form className="contact-form contact-form-card" action="#" method="post">
             <div className="form-head">
@@ -391,6 +403,8 @@ export default function HomePage() {
           </form>
         </div>
       </section>
+
+      <WhatsAppChat />
 
       <footer className="footer">
         <div className="container footer-inner">
